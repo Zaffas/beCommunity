@@ -10,6 +10,11 @@ li {
   float: left;
 }
 
+.logo a {
+  color: #04aa6d;
+  font-weight: 900;
+}
+
 .about {
   float: right;
 }

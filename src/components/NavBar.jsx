@@ -4,8 +4,8 @@ import "./NavBar.css";
 const NavBar = () => {
   return (
     <ul>
-      <li>
-        <a href="#home">Home</a>
+      <li className="logo">
+        <a href="#home">Be Community</a>
       </li>
       <li>
         <a href="#news">News</a>
