@@ -12,7 +12,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     const getProductos = async () => {
       try {
-        const response = await fetch("/mocks/data.json");
+        const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         setTimeout(setProductos(data), 3000);
       } catch (error) {

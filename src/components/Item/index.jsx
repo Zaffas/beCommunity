@@ -9,7 +9,7 @@ export const Item = ({ product }) => {
         <h4>
           <b>{product.title}</b>
         </h4>
-        <p>{product.category}r</p>
+        <p>{product.category}</p>
       </div>
     </div>
   );
