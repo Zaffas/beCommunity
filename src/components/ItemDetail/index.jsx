@@ -1,7 +1,6 @@
 import React from "react";
 import "./styles.css";
 import Card from "react-bootstrap/Card";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 const ItemDetail = ({ product }) => {
   return (

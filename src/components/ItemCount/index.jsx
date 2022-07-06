@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
+import Button from "react-bootstrap/Button";
 
 const ItemCount = ({ SumarCarrito, StockTotal, StockInicial }) => {
   const [count, setCount] = useState(StockInicial);
@@ -19,10 +20,15 @@ const ItemCount = ({ SumarCarrito, StockTotal, StockInicial }) => {
 
   return (
     <div>
-      <p>{count}</p>
-      <button onClick={sumarCount}>Sumar</button>
-      <button onClick={restarCount}>Restar</button>
-      <button onClick={SumarCarrito}>Agregar al carrito</button>
+      <Button variant="primary" onClick={restarCount}>
+        -
+      </Button>
+      <Button variant="primary" onClick={SumarCarrito}>
+        Agregar al carrito {count} unidades
+      </Button>
+      <Button variant="primary" onClick={sumarCount}>
+        +
+      </Button>
     </div>
   );
 };
