@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import Button from "react-bootstrap/Button";
 
-const ItemCount = ({ SumarCarrito, StockTotal, StockInicial }) => {
+const ItemCount = ({ onConfirm, StockTotal, StockInicial }) => {
   const [count, setCount] = useState(StockInicial);
 
   const sumarCount = () => {
@@ -23,8 +23,8 @@ const ItemCount = ({ SumarCarrito, StockTotal, StockInicial }) => {
       <Button variant="primary" onClick={restarCount}>
         -
       </Button>
-      <Button variant="primary" onClick={SumarCarrito}>
-        Agregar al carrito {count} unidades
+      <Button variant="primary" onClick={onConfirm}>
+        Agregar al carrito {count} u.
       </Button>
       <Button variant="primary" onClick={sumarCount}>
         +

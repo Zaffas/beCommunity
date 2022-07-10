@@ -43,7 +43,11 @@ const ItemListContainer = () => {
   return (
     <div>
       {/* <ItemCount SumarCarrito={SumarCarrito} StockTotal={10} StockInicial={7} /> */}
-      {productos ? <ItemList products={productosFiltrados} /> : null}
+      {productos ? (
+        <ItemList products={productosFiltrados} />
+      ) : (
+        <p>Cargando productos...</p>
+      )}
     </div>
   );
 };
