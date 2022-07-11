@@ -3,33 +3,39 @@ import "./styles.css";
 import Button from "react-bootstrap/Button";
 
 const ItemCount = ({ onConfirm, StockTotal, StockInicial }) => {
-  const [count, setCount] = useState(StockInicial);
+  const [value, setValue] = useState(StockInicial);
 
   const sumarCount = () => {
-    if (count < StockTotal) {
-      setCount(count + 1);
+    if (value < StockTotal) {
+      setValue(value + 1);
     } else {
     }
   };
   const restarCount = () => {
-    if (count <= 0) {
+    if (value <= 0) {
     } else {
-      setCount(count - 1);
+      setValue(value - 1);
+    }
+  };
+
+  const handleConfirm = () => {
+    if (value <= StockTotal) {
+      onConfirm(value);
     }
   };
 
   return (
-    <div>
+    <span>
       <Button variant="primary" onClick={restarCount}>
         -
       </Button>
-      <Button variant="primary" onClick={onConfirm}>
-        Agregar al carrito {count} u.
+      <Button variant="primary" onClick={handleConfirm}>
+        Agregar al carrito {value} u.
       </Button>
       <Button variant="primary" onClick={sumarCount}>
         +
       </Button>
-    </div>
+    </span>
   );
 };
 export default ItemCount;

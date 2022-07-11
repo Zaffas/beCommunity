@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-// import ItemCount from "../../components/ItemCount";
 import { ItemList } from "../../components/ItemList";
 import { useParams } from "react-router-dom";
-
-// const SumarCarrito = () => {
-//   console.log("Se agrego al carrito");
-// };
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
@@ -42,7 +37,6 @@ const ItemListContainer = () => {
 
   return (
     <div>
-      {/* <ItemCount SumarCarrito={SumarCarrito} StockTotal={10} StockInicial={7} /> */}
       {productos ? (
         <ItemList products={productosFiltrados} />
       ) : (

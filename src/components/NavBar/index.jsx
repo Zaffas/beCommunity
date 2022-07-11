@@ -2,8 +2,12 @@ import React from "react";
 import "./styles.css";
 import CartWidget from "../CartWidget";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Shop } from "../../context/ShopContext";
 
 const NavBar = () => {
+  const { estadoA } = useContext(Shop);
+
   return (
     <ul>
       <li className="logo">
