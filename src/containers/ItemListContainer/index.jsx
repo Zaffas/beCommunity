@@ -12,7 +12,7 @@ const ItemListContainer = () => {
   useEffect(() => {
     const getProductos = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products");
+        const response = await fetch("../mocks/data.json");
         const data = await response.json();
         setTimeout(setProductos(data), 3000);
         setTimeout(setProductosFiltrados(data), 3000);
@@ -27,8 +27,9 @@ const ItemListContainer = () => {
   useEffect(() => {
     if (params?.categoryId) {
       const productosFiltrados = productos.filter(
-        (producto) => producto.category === params.categoryId
+        (producto) => producto.category == params.categoryId
       );
+      console.log(productosFiltrados);
       setProductosFiltrados(productosFiltrados);
     } else {
       setProductosFiltrados(productos);

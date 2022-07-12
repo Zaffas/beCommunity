@@ -11,19 +11,21 @@ const NavBar = () => {
   return (
     <ul>
       <li className="logo">
-        <Link to="/">Be Community</Link>
+        <Link to="/">
+          <div>Be Community</div>
+        </Link>
       </li>
       <li>
-        <Link to="/category/electronics">Electronics</Link>
+        <Link to="/category/asesoramiento">Asesoramiento</Link>
       </li>
       <li>
-        <Link to="/category/jewelery">Jewelery</Link>
+        <Link to="/category/diseño">Diseño</Link>
       </li>
       <li>
-        <Link to="/category/women's clothing">Women</Link>
+        <Link to="/category/community manager">Community Manager</Link>
       </li>
       <li>
-        <Link to="/category/men's clothing">Man</Link>
+        <Link to="/category/fotografia">Fotografia</Link>
       </li>
       <li className="about">
         <a className="active" href="#about">
