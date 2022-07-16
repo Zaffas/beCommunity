@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { ItemList } from "../../components/ItemList";
 import { useParams } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 const ItemListContainer = () => {
   const [productos, setProductos] = useState([]);
@@ -37,13 +38,13 @@ const ItemListContainer = () => {
   }, [params, productos]);
 
   return (
-    <div>
+    <Container>
       {productos ? (
         <ItemList products={productosFiltrados} />
       ) : (
         <p>Cargando productos...</p>
       )}
-    </div>
+    </Container>
   );
 };
 

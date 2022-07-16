@@ -26,13 +26,13 @@ const ItemCount = ({ onConfirm, StockTotal, StockInicial }) => {
 
   return (
     <span>
-      <Button variant="primary" onClick={restarCount}>
+      <Button variant="dark" text="light" onClick={restarCount}>
         -
       </Button>
-      <Button variant="primary" onClick={handleConfirm}>
+      <Button variant="dark" text="light" onClick={handleConfirm}>
         Agregar al carrito {value} u.
       </Button>
-      <Button variant="primary" onClick={sumarCount}>
+      <Button variant="dark" text="light" onClick={sumarCount}>
         +
       </Button>
     </span>

@@ -3,7 +3,8 @@ import "./styles.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useNavigate } from "react-router-dom";
-
+import Col from "react-bootstrap/Col";
+import Badge from "react-bootstrap/Badge";
 export const Item = ({ product }) => {
   const navigate = useNavigate();
 
@@ -12,17 +13,23 @@ export const Item = ({ product }) => {
   };
 
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
+    <Col className="columna">
+      <Card style={{ width: "16rem" }}>
         <Card.Img variant="top" src={product.image} />
         <Card.Body>
-          <Card.Title>{product.title}</Card.Title>
-          <Card.Text>{product.category}</Card.Text>
-          <Button variant="primary" onClick={handleDetail}>
-            Ver detalle
-          </Button>
+          <div className="badge">
+            <Badge bg="dark">Categoria: {product.category}</Badge>
+          </div>
+          <div className="titulo">
+            <Card.Title>{product.title}</Card.Title>
+          </div>
+          <div className="button">
+            <Button variant="secondary" onClick={handleDetail}>
+              Ver detalle
+            </Button>
+          </div>
         </Card.Body>
       </Card>
-    </div>
+    </Col>
   );
 };

@@ -6,41 +6,50 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";
 import { Shop } from "../../context/ShopContext";
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/esm/Button";
 
 const ItemDetail = ({ product }) => {
   const navigate = useNavigate();
-  product.stock = 9;
+  product.stock = 99;
   const [qtyAdded, setQtyAdded] = useState(0);
   const { addItem } = useContext(Shop);
   const handleConfirm = (qty) => {
     setQtyAdded(qty);
+    addItem(product, qty);
   };
   const handleTerminate = () => {
-    addItem(product, qtyAdded);
     navigate("/cart");
   };
 
   return (
-    <div className="detalle">
+    <Container>
       <Card>
-        <Card.Img variant="top" src={product.image} />
+        <Card.Img variant="top" src={product.image} className="imagen" />
+
         <Card.Body>
           <Card.Text>
-            {product.title}
-            {product.description}
+            <span className="titulo">{product.title}</span>
+            <span>{product.description}</span>
             {!qtyAdded ? (
-              <ItemCount
-                onConfirm={handleConfirm}
-                StockInicial={1}
-                StockTotal={product.stock}
-              />
+              <span className="contadorcontainer">
+                <ItemCount
+                  onConfirm={handleConfirm}
+                  StockInicial={1}
+                  StockTotal={product.stock}
+                />
+              </span>
             ) : (
-              <button onClick={handleTerminate}>Terminar Compra</button>
+              <span className="contadorcontainer">
+                <Button variant="dark" text="light" onClick={handleTerminate}>
+                  Ir al carrito
+                </Button>
+              </span>
             )}
           </Card.Text>
         </Card.Body>
       </Card>
-    </div>
+    </Container>
   );
 };
 

@@ -21,7 +21,21 @@ const ShopProvider = ({ children }) => {
     return cart.find((elemento) => elemento.id === producto.id);
   };
 
-  return <Shop.Provider value={{ addItem, cart }}>{children}</Shop.Provider>;
+  const removeAll = () => {
+    setCart([]);
+  };
+
+  const removeItem = (item) => {
+    const currentCart = [...cart];
+    const newCart = currentCart.filter((product) => product.id !== item);
+    setCart(newCart);
+  };
+
+  return (
+    <Shop.Provider value={{ cart, addItem, removeAll, removeItem }}>
+      {children}
+    </Shop.Provider>
+  );
 };
 
 export default ShopProvider;

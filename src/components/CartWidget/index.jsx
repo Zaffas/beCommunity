@@ -1,15 +1,24 @@
 import React from "react";
 import "./styles.css";
-import { BsCart } from "react-icons/bs";
+import { BsCart3 } from "react-icons/bs";
 import { Shop } from "../../context/ShopContext";
+import { Badge } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const CartWidget = () => {
   const { cart } = React.useContext(Shop);
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    navigate("/cart");
+  };
 
   return (
-    <div>
-      {cart.length && <span>({cart.length})</span>}
-      <BsCart />
+    <div onClick={handleCart} style={{ alignItems: "center" }}>
+      <Badge pill bg="light" text="dark">
+        {cart.length > 0 && <span>{cart.length}</span>}
+      </Badge>
+      <BsCart3 size="2rem" className="chango" />
     </div>
   );
 };

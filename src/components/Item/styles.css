@@ -1,0 +1,18 @@
+.columna {
+  display: flex;
+  justify-content: center;
+}
+.card {
+  margin-block: 1rem;
+}
+.badge {
+  display: flex;
+}
+.button {
+  display: flex;
+  justify-content: end;
+}
+.titulo {
+  min-height: 5rem;
+  text-align: start;
+}

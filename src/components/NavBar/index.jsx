@@ -2,42 +2,54 @@ import React from "react";
 import "./styles.css";
 import CartWidget from "../CartWidget";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { Shop } from "../../context/ShopContext";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 const NavBar = () => {
-  const { estadoA } = useContext(Shop);
-
   return (
-    <ul>
-      <li className="logo">
-        <Link to="/">
-          <div>Be Community</div>
-        </Link>
-      </li>
-      <li>
-        <Link to="/category/asesoramiento">Asesoramiento</Link>
-      </li>
-      <li>
-        <Link to="/category/diseño">Diseño</Link>
-      </li>
-      <li>
-        <Link to="/category/community manager">Community Manager</Link>
-      </li>
-      <li>
-        <Link to="/category/fotografia">Fotografia</Link>
-      </li>
-      <li className="about">
-        <a className="active" href="#about">
-          About
-        </a>
-      </li>
-      <li className="about">
-        <a href="cart">
-          <CartWidget />
-        </a>
-      </li>
-    </ul>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand>
+          <Link to="/" className="logo">
+            Be Community
+          </Link>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+            <NavDropdown title="Categorias" id="collasible-nav-dropdown">
+              <NavDropdown.Item>
+                <Link to="/category/asesoramiento" className="category">
+                  Asesoramiento
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/category/diseño" className="category">
+                  Diseño
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/category/community manager" className="category">
+                  Community Manager
+                </Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item>
+                <Link to="/category/fotografia" className="category">
+                  Fotografia
+                </Link>
+              </NavDropdown.Item>
+            </NavDropdown>
+          </Nav>
+          <Nav>
+            <Nav.Link>
+              <CartWidget />
+            </Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
