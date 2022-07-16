@@ -4,6 +4,7 @@ import { Shop } from "../../context/ShopContext";
 import Table from "react-bootstrap/Table";
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./styles.css";
 
 export const Cart = () => {
   const { cart } = useContext(Shop);
@@ -31,33 +32,78 @@ export const Cart = () => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Item</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-            <th>Subtotal</th>
-            <th>Acciones</th>
+            <th>
+              <div className="centrar">Item</div>
+            </th>
+            <th>
+              <div className="centrar">Precio</div>
+            </th>
+            <th>
+              <div className="centrar">Cantidad</div>
+            </th>
+            <th>
+              <div className="centrar">Subtotal</div>
+            </th>
+            <th>
+              <div className="centrar">Acciones</div>
+            </th>
           </tr>
         </thead>
         <tbody>
           {cart.map((producto) => {
             return (
               <tr key={producto.id}>
-                <td>{producto.title}</td>
-                <td>${producto.price}</td>
-                <td>{producto.quantity} u.</td>
-                <td>${producto.price * producto.quantity}</td>
                 <td>
-                  <Button
-                    /* onClick={removeItem(producto.id)} */ variant="danger"
-                  >
-                    Borrar
-                  </Button>
+                  <div className="centrar">{producto.title}</div>
+                </td>
+                <td>
+                  <div className="centrar">${producto.price}</div>
+                </td>
+                <td>
+                  <div className="centrar">{producto.quantity} u.</div>
+                </td>
+                <td>
+                  <div className="centrar">
+                    ${producto.price * producto.quantity}
+                  </div>
+                </td>
+                <td>
+                  <div className="centrar">
+                    <Button
+                      /* onClick={removeItem(producto.id)} */ variant="danger"
+                    >
+                      Borrar
+                    </Button>
+                  </div>
                 </td>
               </tr>
             );
           })}
+          <tr>
+            <th colSpan={2}>
+              <div className="centrar">Total:</div>
+            </th>
+            <th>
+              <div className="centrar"> u.</div>
+            </th>
+            <th>
+              <div className="centrar">$</div>
+            </th>
+            <th>
+              <div className="centrar">
+                <Button onClick={removeAll} variant="danger">
+                  Borrar todo
+                </Button>
+              </div>
+            </th>
+          </tr>
         </tbody>
       </Table>
+      <div className="end">
+        <Button variant="dark" text="light">
+          Terminar Compra
+        </Button>
+      </div>
     </Container>
   );
 };
