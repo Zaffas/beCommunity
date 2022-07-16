@@ -21,9 +21,12 @@ export const Item = ({ product }) => {
             <Badge bg="dark">Categoria: {product.category}</Badge>
           </div>
           <div className="titulo">
-            <Card.Title>{product.title}</Card.Title>
+            <Card.Title>{product.title}</Card.Title>{" "}
           </div>
+
           <div className="button">
+            {" "}
+            <span className="precio">${product.price}</span>
             <Button variant="secondary" onClick={handleDetail}>
               Ver detalle
             </Button>

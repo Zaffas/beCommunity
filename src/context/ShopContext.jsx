@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { createContext } from "react";
+import { useEffect } from "react";
 
 export const Shop = createContext();
 
 const ShopProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
+  const [precioArray, setPrecioArray] = useState([]);
 
   const addItem = (producto, cantidad) => {
     const productoRepetido = isInCart(producto);

@@ -29,8 +29,9 @@ const ItemDetail = ({ product }) => {
 
         <Card.Body>
           <Card.Text>
-            <span className="titulo">{product.title}</span>
+            <span className="titulo">{product.title}: </span>
             <span>{product.description}</span>
+            <span className="precio">Precio: ${product.price}</span>
             {!qtyAdded ? (
               <span className="contadorcontainer">
                 <ItemCount
