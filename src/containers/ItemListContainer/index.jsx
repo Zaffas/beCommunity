@@ -19,7 +19,6 @@ const ItemListContainer = () => {
         const querySnapshot = await getDocs(q);
         const productos = [];
         querySnapshot.forEach((doc) => {
-          console.log(doc.id, " => ", doc.data());
           productos.push({ id: doc.id, ...doc.data() });
         });
         setTimeout(setProductos(productos), 3000);
@@ -37,7 +36,6 @@ const ItemListContainer = () => {
       const productosFiltrados = productos.filter(
         (producto) => producto.category == params.categoryId
       );
-      console.log(productosFiltrados);
       setProductosFiltrados(productosFiltrados);
     } else {
       setProductosFiltrados(productos);

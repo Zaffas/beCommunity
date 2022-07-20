@@ -1,9 +1,12 @@
 .end {
   display: flex;
-  justify-content: end;
+  justify-content: center;
   margin-right: 4.5rem;
 }
 .centrar {
   display: flex;
   justify-content: center;
+}
+.botonfin {
+  margin: 1rem;
 }

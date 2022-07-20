@@ -5,14 +5,20 @@ import Table from "react-bootstrap/Table";
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
+import { useEffect } from "react";
 
 export const Cart = () => {
   const { cart } = useContext(Shop);
-  const { removeAll, removeItem } = useContext(Shop);
+  const { removeAll, removeItem, cantidadItems, precioItems } =
+    useContext(Shop);
 
   const navigate = useNavigate();
   const handleBack = () => {
     navigate("/");
+  };
+
+  const handleClick = (id) => {
+    removeItem(id);
   };
 
   if (cart.length == 0) {
@@ -63,14 +69,15 @@ export const Cart = () => {
                   <div className="centrar">{producto.quantity} u.</div>
                 </td>
                 <td>
-                  <div className="centrar">
+                  <div className="centrar" key={producto.id}>
                     ${producto.price * producto.quantity}
                   </div>
                 </td>
                 <td>
                   <div className="centrar">
                     <Button
-                      /* onClick={removeItem(producto.id)} */ variant="danger"
+                      onClick={() => handleClick(producto.id)}
+                      variant="danger"
                     >
                       Borrar
                     </Button>
@@ -84,10 +91,10 @@ export const Cart = () => {
               <div className="centrar">Total:</div>
             </th>
             <th>
-              <div className="centrar"> u.</div>
+              <div className="centrar">{cantidadItems} u.</div>
             </th>
             <th>
-              <div className="centrar">$</div>
+              <div className="centrar">${precioItems}</div>
             </th>
             <th>
               <div className="centrar">
@@ -100,7 +107,15 @@ export const Cart = () => {
         </tbody>
       </Table>
       <div className="end">
-        <Button variant="dark" text="light">
+        <Button
+          className="botonfin"
+          variant="dark"
+          text="light"
+          onClick={handleBack}
+        >
+          Volver a la tienda
+        </Button>
+        <Button className="botonfin" variant="dark" text="light">
           Terminar Compra
         </Button>
       </div>

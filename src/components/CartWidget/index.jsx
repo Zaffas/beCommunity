@@ -6,7 +6,7 @@ import { Badge } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 const CartWidget = () => {
-  const { cart } = React.useContext(Shop);
+  const { cart, calculoCantidadItems, cantidadItems } = React.useContext(Shop);
   const navigate = useNavigate();
 
   const handleCart = () => {
@@ -16,7 +16,7 @@ const CartWidget = () => {
   return (
     <div onClick={handleCart} style={{ alignItems: "center" }}>
       <Badge pill bg="light" text="dark">
-        {cart.length > 0 && <span>{cart.length}</span>}
+        {cart.length > 0 && <span>{cantidadItems}</span>}
       </Badge>
       <BsCart3 size="2rem" className="chango" />
     </div>
