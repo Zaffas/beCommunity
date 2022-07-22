@@ -5,7 +5,6 @@ import Table from "react-bootstrap/Table";
 import { Container, Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
-import { useEffect } from "react";
 
 export const Cart = () => {
   const { cart } = useContext(Shop);
@@ -15,6 +14,10 @@ export const Cart = () => {
   const navigate = useNavigate();
   const handleBack = () => {
     navigate("/");
+  };
+
+  const handleFinishBuy = () => {
+    navigate("/buy");
   };
 
   const handleClick = (id) => {
@@ -115,7 +118,12 @@ export const Cart = () => {
         >
           Volver a la tienda
         </Button>
-        <Button className="botonfin" variant="dark" text="light">
+        <Button
+          className="botonfin"
+          variant="dark"
+          text="light"
+          onClick={handleFinishBuy}
+        >
           Terminar Compra
         </Button>
       </div>

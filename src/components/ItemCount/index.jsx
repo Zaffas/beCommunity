@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./styles.css";
 import Button from "react-bootstrap/Button";
 
 const ItemCount = ({ onConfirm, StockTotal, StockInicial }) => {

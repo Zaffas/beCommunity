@@ -11,7 +11,6 @@ import Button from "react-bootstrap/esm/Button";
 
 const ItemDetail = ({ product }) => {
   const navigate = useNavigate();
-  product.stock = 99;
   const [qtyAdded, setQtyAdded] = useState(0);
   const { addItem } = useContext(Shop);
   const handleConfirm = (qty) => {

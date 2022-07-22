@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { NotFound } from "./components/NotFound";
 import Cart from "./containers/Cart";
 import ShopProvider from "./context/ShopContext";
+import BuyForm from "./components/BuyForm";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/detail/:productId" element={<ItemDetailContainer />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/buy" element={<BuyForm />} />
         </Routes>
       </BrowserRouter>
     </ShopProvider>
