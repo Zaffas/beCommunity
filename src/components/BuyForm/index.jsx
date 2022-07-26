@@ -10,13 +10,14 @@ import { db } from "../../firebase/config";
 import { useState } from "react";
 
 export const BuyForm = () => {
-  const { cart, precioItems } = useContext(Shop);
+  const { cart, precioItems, removeAll } = useContext(Shop);
   useContext(Shop);
 
   const [compraRealizada, setCompraRealizada] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [inputsValidated, setInputsValidated] = useState(null);
 
   const navigate = useNavigate();
   const handleBack = () => {
@@ -24,7 +25,33 @@ export const BuyForm = () => {
   };
 
   const handleFinish = () => {
-    confirmarOrden();
+    validateInputs();
+  };
+
+  const handleBuyAgain = () => {
+    navigate("/");
+    removeAll();
+  };
+
+  function validarEmail(valor) {
+    if (
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
+        valor
+      )
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const validateInputs = () => {
+    if (name.length >= 3 && validarEmail(email) && phone.length >= 8) {
+      setInputsValidated(true);
+      confirmarOrden();
+    } else {
+      setInputsValidated(false);
+    }
   };
 
   const ordenGenerada = (nombre, email, phone, cart, total) => {
@@ -68,9 +95,58 @@ export const BuyForm = () => {
           Tu pedido ya fue realizado con exito, tu codigo de orden es:
           <b>{compraRealizada}</b>.
         </h3>
-        <Button variant="danger" onClick={handleBack}>
+        <Button variant="danger" onClick={handleBuyAgain}>
           Volver a comprar
         </Button>
+      </Container>
+    );
+  }
+  if (inputsValidated == false) {
+    return (
+      <Container>
+        <h3>
+          Uno de los datos que has ingresados es incorrecto o se encuentra
+          incompleto.
+        </h3>
+        <h2>Estas armando un pedido por un total de ${precioItems}.</h2>
+        <Form>
+          <Form.Group
+            className="mb-3"
+            controlId="formName"
+            onChange={(event) => setName(event.target.value)}
+          >
+            <Form.Label>Nombre</Form.Label>
+            <Form.Control type="name" placeholder="Escribe tu nombre" />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+          <Form.Group
+            className="mb-3"
+            controlId="formEmail"
+            onChange={(event) => setEmail(event.target.value)}
+          >
+            <Form.Label>Correo Electronico</Form.Label>
+            <Form.Control
+              type="email"
+              placeholder="Escribe tu correo electronico"
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+          <Form.Group
+            className="mb-3"
+            controlId="formTel"
+            onChange={(event) => setPhone(event.target.value)}
+          >
+            <Form.Label>Numero de telefono</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Escribe tu numero de telefono"
+            />
+            <Form.Text className="text-muted"></Form.Text>
+          </Form.Group>
+          <Button variant="dark" text="light" onClick={() => handleFinish()}>
+            Terminar Compra
+          </Button>
+        </Form>
       </Container>
     );
   }
@@ -106,7 +182,7 @@ export const BuyForm = () => {
         >
           <Form.Label>Numero de telefono</Form.Label>
           <Form.Control
-            type="tel"
+            type="number"
             placeholder="Escribe tu numero de telefono"
           />
           <Form.Text className="text-muted"></Form.Text>

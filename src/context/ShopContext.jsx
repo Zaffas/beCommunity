@@ -24,6 +24,10 @@ const ShopProvider = ({ children }) => {
     return cart.find((elemento) => elemento.id === producto.id);
   };
 
+  const compraFinalizada = () => {
+    setCart([]);
+  };
+
   const removeAll = () => {
     setCart([]);
   };
@@ -66,6 +70,7 @@ const ShopProvider = ({ children }) => {
         removeItem,
         cantidadItems,
         precioItems,
+        compraFinalizada,
       }}
     >
       {children}
