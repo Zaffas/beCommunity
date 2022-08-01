@@ -5,7 +5,7 @@ Pagina E-Commerce en base a React.
 Hecha por Silvio Zaffaroni.
 Github: https://github.com/Zaffas
 
-![](https://im.ge/i/Fy5iXG)
+![](https://i.im.ge/2022/08/02/Fy5iXG.ejemploCompra.gif)
 
 Dependencias usadas:
 -React
