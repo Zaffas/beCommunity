@@ -8,6 +8,8 @@ import { useContext } from "react";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../firebase/config";
 import { useState } from "react";
+import validarEmail from "../../utils/validarEmail";
+import ordenGenerada from "../../utils/ordenGenerada";
 
 export const BuyForm = () => {
   const { cart, precioItems, removeAll } = useContext(Shop);
@@ -33,18 +35,6 @@ export const BuyForm = () => {
     removeAll();
   };
 
-  function validarEmail(valor) {
-    if (
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(
-        valor
-      )
-    ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
   const validateInputs = () => {
     if (name.length >= 3 && validarEmail(email) && phone.length >= 8) {
       setInputsValidated(true);
@@ -52,19 +42,6 @@ export const BuyForm = () => {
     } else {
       setInputsValidated(false);
     }
-  };
-
-  const ordenGenerada = (nombre, email, phone, cart, total) => {
-    return {
-      buyer: {
-        nombre: nombre,
-        email: email,
-        numero: phone,
-      },
-      items: cart,
-      total: total,
-      createdAt: new Date().toLocaleDateString(),
-    };
   };
 
   const confirmarOrden = async () => {
